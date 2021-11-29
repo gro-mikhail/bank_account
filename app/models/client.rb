@@ -1,5 +1,6 @@
 class Client < ApplicationRecord
   has_and_belongs_to_many :tags
+  has_many :bank_account_numbers
 
   validates :name, presence: true
   validates :surname, presence: true

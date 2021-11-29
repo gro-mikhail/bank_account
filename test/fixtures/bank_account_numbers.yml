@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  account_number: 1
+  balance: 1.5
+  currency_type: MyString
+  client: one
+
+two:
+  account_number: 1
+  balance: 1.5
+  currency_type: MyString
+  client: two
