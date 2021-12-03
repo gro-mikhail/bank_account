@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
-  resources :bank_account_numbers, only: :create
+  resources :accounts, only: :create
   resources :clients, only: :create
+  resources :transactions, only: :create
 end

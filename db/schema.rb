@@ -10,16 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_29_200400) do
+ActiveRecord::Schema.define(version: 2021_12_01_225853) do
 
-  create_table "bank_account_numbers", force: :cascade do |t|
+  create_table "accounts", force: :cascade do |t|
     t.float "balance", default: 0.0, null: false
+    t.string "account_number", null: false
     t.string "currency", null: false
     t.integer "client_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["client_id"], name: "index_bank_account_numbers_on_client_id"
-    t.index ["currency"], name: "index_bank_account_numbers_on_currency"
+    t.index ["client_id", "currency"], name: "index_accounts_on_client_id_and_currency"
+    t.index ["client_id"], name: "index_accounts_on_client_id"
   end
 
   create_table "clients", force: :cascade do |t|
@@ -44,5 +45,20 @@ ActiveRecord::Schema.define(version: 2021_11_29_200400) do
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
-  add_foreign_key "bank_account_numbers", "clients"
+  create_table "transactions", force: :cascade do |t|
+    t.float "amount", null: false
+    t.string "currency", null: false
+    t.string "transaction_type", null: false
+    t.boolean "transfer", default: false, null: false
+    t.integer "client_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id"], name: "index_transactions_on_client_id"
+    t.index ["currency"], name: "index_transactions_on_currency"
+    t.index ["transaction_type"], name: "index_transactions_on_transaction_type"
+    t.index ["transfer"], name: "index_transactions_on_transfer"
+  end
+
+  add_foreign_key "accounts", "clients"
+  add_foreign_key "transactions", "clients"
 end

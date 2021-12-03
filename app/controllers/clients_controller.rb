@@ -2,7 +2,7 @@ class ClientsController < ApplicationController
   def create
     client = Client.new(clients_params.transform_values!(&:upcase))
     if client.save
-      tags = params[:tags].map(&:upcase)
+      tags = params[:tags]&.map(&:upcase)
       tags = tags ? tags.map { |tag| Tag.find_or_create_by(name: tag) } : []
       client.tags << tags
       render json: client, status: 201
