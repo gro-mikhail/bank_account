@@ -88,8 +88,6 @@ GEM
     nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
-    nokogiri (1.12.5-x86_64-linux)
-      racc (~> 1.4)
     puma (4.3.10)
       nio4r (~> 2.0)
     racc (1.6.0)
