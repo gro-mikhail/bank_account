@@ -2,7 +2,7 @@ class TransactionCreator
   attr_reader :errors
 
   def initialize(params)
-    @amount = params[:amount]
+    @amount = params[:amount].to_f
     @currency = params[:currency].upcase
     @sender_uid = params[:sender_uid]&.upcase
     @recipient_uid = params[:recipient_uid].upcase

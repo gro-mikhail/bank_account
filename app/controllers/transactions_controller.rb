@@ -3,7 +3,7 @@ class TransactionsController < ApplicationController
     transaction = TransactionCreator.new(transactions_params)
     transaction.call
     if transaction.errors.empty?
-      render json: transaction, status: 201
+      render json: transaction, status: 200
     else
       render json: { message: transaction.errors.flatten.uniq }, status: 400
     end
